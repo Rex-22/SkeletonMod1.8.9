@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skeletonmod",
+  "name": "Skeleton Mod",
+  "description": "Skeleton mod for 1.8 mods",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Rex_22"],
+  "credits": "FireBall1725",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
