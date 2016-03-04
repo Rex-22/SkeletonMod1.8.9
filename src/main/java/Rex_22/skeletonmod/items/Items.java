@@ -9,7 +9,9 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public enum Items {
-    EXAMPLE_ITEM("example_item", new ItemExampleItem(), CreativeTabs.tabDecorations);
+    //ADD ITEMS HERE
+    EXAMPLE_ITEM("example_item", new ItemExampleItem(), CreativeTabs.tabDecorations)
+    ;
 
     private static boolean registeredItem = false;
     public final Item item;

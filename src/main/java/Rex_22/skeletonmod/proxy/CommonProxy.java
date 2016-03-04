@@ -10,17 +10,19 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public abstract class CommonProxy implements IProxy {
 
+    //Register Items
     @Override
     public void registerItems() {
         Items.registerAll();
     }
 
+    //Register Blocks
     @Override
     public void registerBlocks() {
         Blocks.registerAll();
-
     }
 
+    //Register Recipes
     @Override
     public void registerRecipes() {
         //Blocks
@@ -30,11 +32,13 @@ public abstract class CommonProxy implements IProxy {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.EXAMPLE_ITEM.item), " s ", "sss", " s ", 's', "plankWood"));
     }
 
+    //Register Fuel
     @Override
-    public void registerFule() {
+    public void registerFuel() {
         GameRegistry.registerFuelHandler(new FuleHandler());
     }
 
+    //Register World Gen
     @Override
     public void registerWorldGen() {
         GameRegistry.registerWorldGenerator(new WorldGen(), 0);

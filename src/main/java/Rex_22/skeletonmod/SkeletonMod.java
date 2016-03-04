@@ -24,7 +24,7 @@ public class SkeletonMod {
         //Register Blocks
         proxy.registerBlocks();
         //Register Fule
-        proxy.registerFule();
+        proxy.registerFuel();
     }
 
     @Mod.EventHandler

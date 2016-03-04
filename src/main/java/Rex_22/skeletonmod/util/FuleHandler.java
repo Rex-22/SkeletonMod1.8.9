@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.IFuelHandler;
 public class FuleHandler implements IFuelHandler {
     @Override
     public int getBurnTime(ItemStack fuel) {
+        //If Item = EXAMPLE_BLOCK then add burn Time
         if (fuel.isItemEqual(new ItemStack(Blocks.EXAMPLE_BLOCK.block))) {
             return 16000;
         }

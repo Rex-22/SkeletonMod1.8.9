@@ -10,6 +10,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientProxy extends CommonProxy {
 
+    //Register Block Item Renders
     @Override
     public void registerBlocks() {
         super.registerBlocks();
@@ -20,6 +21,7 @@ public class ClientProxy extends CommonProxy {
             }
     }
 
+    //Register Items Item Renders
     @Override
     public void registerItems() {
         super.registerItems();

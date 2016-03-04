@@ -9,7 +9,9 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public enum Blocks {
-    EXAMPLE_BLOCK("example_block", new BlockExampleBlock(), CreativeTabs.tabBlock);
+    //ADD BLOCKS HERE
+    EXAMPLE_BLOCK("example_block", new BlockExampleBlock(), CreativeTabs.tabBlock)
+    ;
 
     private static boolean registeredBlock = false;
     public final Block block;
