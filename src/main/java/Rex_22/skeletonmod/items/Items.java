@@ -2,6 +2,7 @@ package Rex_22.skeletonmod.items;
 
 import Rex_22.skeletonmod.reference.LogHelper;
 import Rex_22.skeletonmod.reference.ModInfo;
+import Rex_22.skeletonmod.util.IItemRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,10 +14,8 @@ public enum Items {
     EXAMPLE_ITEM("example_item", new ItemExampleItem(), CreativeTabs.tabDecorations)
     ;
 
-    private static boolean registeredItem = false;
     public final Item item;
     private final String internalName;
-    private final CreativeTabs creativeTabs;
 
     Items(String internalName, Item item) {
         this(internalName, item, null);
@@ -25,30 +24,26 @@ public enum Items {
     Items(String internalName, Item item, CreativeTabs creativeTabs) {
         this.internalName = internalName;
         this.item = item;
-        item.setUnlocalizedName(ModInfo.MOD_ID + "." + internalName);
-        this.creativeTabs = creativeTabs;
+        item.setUnlocalizedName(ModInfo.MOD_ID + ":" + internalName);
+        item.setCreativeTab(creativeTabs);
     }
 
-    public static void registerAll() {
-        if (registeredItem)
-            return;
-        for (Items i : Items.values())
-            i.registerItem();
-        registeredItem = true;
+    public static void registerItems() {
+        for (Items i : Items.values()) {
+            i.register();
+        }
     }
 
-    public String getInternalName() {
-        return internalName;
+    public void register() {
+        GameRegistry.registerItem(item, internalName);
+
+        if (item instanceof IItemRenderer) {
+            ((IItemRenderer) item).registerItemRenderer();
+        }
     }
 
     public String getStatName() {
         return StatCollector.translateToLocal(item.getUnlocalizedName());
-    }
-
-    private void registerItem() {
-        GameRegistry.registerItem(item, internalName);
-
-        LogHelper.info("Registered Item: " + internalName);
     }
 
     public ItemStack getStack(int damage, int size) {
