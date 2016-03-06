@@ -1,6 +1,5 @@
 package Rex_22.skeletonmod.items;
 
-import Rex_22.skeletonmod.reference.LogHelper;
 import Rex_22.skeletonmod.reference.ModInfo;
 import Rex_22.skeletonmod.util.IItemRenderer;
 import net.minecraft.creativetab.CreativeTabs;
@@ -35,8 +34,10 @@ public enum Items {
     }
 
     public void register() {
+        // Register Block in Game Registry
         GameRegistry.registerItem(item, internalName);
 
+        // If bock has Render Info, Register Renderer
         if (item instanceof IItemRenderer) {
             ((IItemRenderer) item).registerItemRenderer();
         }

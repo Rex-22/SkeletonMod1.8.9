@@ -1,7 +1,6 @@
 package Rex_22.skeletonmod.blocks;
 
 import Rex_22.skeletonmod.reference.LogHelper;
-import Rex_22.skeletonmod.reference.ModInfo;
 import Rex_22.skeletonmod.util.IBlockRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -49,7 +48,6 @@ public enum Blocks {
             b.registerBlock();
         }
     }
-
 
     public String getInternalName() {
         return internalName;

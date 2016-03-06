@@ -15,6 +15,6 @@ public class BlockExampleBlock extends BlockBase implements IBlockRenderer {
 
     @Override
     public void registerBlockRenderer() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + getUnlocalizedName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + getRenderName(), "inventory"));
     }
 }

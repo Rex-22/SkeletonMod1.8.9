@@ -117,6 +117,10 @@ public class BlockBase extends BlockContainer {
         return test.toLowerCase();
     }
 
+    public String getRenderName(){
+        return getUnlocalizedName().substring(5);
+    }
+
     protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }

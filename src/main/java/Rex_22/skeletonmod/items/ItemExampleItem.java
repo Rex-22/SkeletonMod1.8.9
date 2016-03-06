@@ -9,6 +9,6 @@ public class ItemExampleItem extends ItemBase implements IItemRenderer {
 
     @Override
     public void registerItemRenderer() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + getUnlocalizedName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + getRenderName(), "inventory"));
     }
 }

@@ -1,5 +1,5 @@
 //Blocks
-tile.skeletonmod.example_block.name=Example Block
+tile.example_block.name=Example Block
 
 //Items
-item.skeletonmod.example_item.name=Example Item
+item.skeletonmod:example_item.name=Example Item
