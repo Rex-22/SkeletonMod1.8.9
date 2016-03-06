@@ -13,13 +13,13 @@ public abstract class CommonProxy implements IProxy {
     //Register Items
     @Override
     public void registerItems() {
-        Items.registerAll();
+        Items.registerItems();
     }
 
     //Register Blocks
     @Override
     public void registerBlocks() {
-        Blocks.registerAll();
+        Blocks.registerBlocks();
     }
 
     //Register Recipes

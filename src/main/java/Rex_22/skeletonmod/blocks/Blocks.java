@@ -2,6 +2,7 @@ package Rex_22.skeletonmod.blocks;
 
 import Rex_22.skeletonmod.reference.LogHelper;
 import Rex_22.skeletonmod.reference.ModInfo;
+import Rex_22.skeletonmod.util.IBlockRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
@@ -13,52 +14,59 @@ public enum Blocks {
     EXAMPLE_BLOCK("example_block", new BlockExampleBlock(), CreativeTabs.tabBlock)
     ;
 
-    private static boolean registeredBlock = false;
     public final Block block;
     private final String internalName;
     private final Class<? extends ItemBlock> itemBlockClass;
     private final CreativeTabs creativeTabs;
+    private final boolean defaultRenderer;
 
     Blocks(String internalName, Block block) {
-        this(internalName, block, ItemBlock.class, null);
+        this(internalName, block, ItemBlock.class, null, true);
     }
 
     Blocks(String internalName, Block block, CreativeTabs creativeTabs) {
-        this(internalName, block, ItemBlock.class, creativeTabs);
+        this(internalName, block, ItemBlock.class, creativeTabs, true);
     }
 
     Blocks(String internalName, Block block, Class<? extends ItemBlock> itemBlockClass) {
-        this(internalName, block, itemBlockClass, null);
+        this(internalName, block, itemBlockClass, null, true);
     }
 
     Blocks(String internalName, Block block, Class<? extends ItemBlock> itemBlockClass, CreativeTabs creativeTabs) {
+        this(internalName, block, itemBlockClass, creativeTabs, true);
+    }
+
+    Blocks(String internalName, Block block, Class<? extends ItemBlock> itemBlockClass, CreativeTabs creativeTabs, boolean useDefaultRenderer) {
         this.internalName = internalName;
         this.block = block;
         this.itemBlockClass = itemBlockClass;
         this.creativeTabs = creativeTabs;
+        this.defaultRenderer = useDefaultRenderer;
     }
 
-    public static void registerAll() {
-        LogHelper.info("Registering things");
-        if (!registeredBlock) {
-            for (Blocks b : Blocks.values()) {
-                b.registerBlock();
-            }
-            registeredBlock = true;
+    public static void registerBlocks() {
+        for (Blocks b : Blocks.values()) {
+            b.registerBlock();
         }
     }
+
 
     public String getInternalName() {
         return internalName;
     }
 
     public String getStatName() {
-        return StatCollector.translateToLocal(block.getUnlocalizedName().replace("tileentity.", "block."));
+        return StatCollector.translateToLocal(block.getUnlocalizedName().replace("tileentities.", "blocks."));
     }
 
     private void registerBlock() {
-        GameRegistry.registerBlock(block.setCreativeTab(creativeTabs).setUnlocalizedName(ModInfo.MOD_ID + "." + internalName),
-                itemBlockClass, internalName);
+        // Register Block in Game Registry
+        GameRegistry.registerBlock(block.setCreativeTab(creativeTabs).setUnlocalizedName(internalName), itemBlockClass, internalName);
+
+        // If bock has Render Info, Register Renderer
+        if (block instanceof IBlockRenderer) {
+            ((IBlockRenderer) block).registerBlockRenderer();
+        }
 
         LogHelper.info("Registered Block: " + internalName);
     }

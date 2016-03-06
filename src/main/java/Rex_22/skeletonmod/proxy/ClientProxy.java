@@ -10,24 +10,4 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientProxy extends CommonProxy {
 
-    //Register Block Item Renders
-    @Override
-    public void registerBlocks() {
-        super.registerBlocks();
-            for (Blocks b : Blocks.values()) {
-                Item block = Item.getItemFromBlock(b.block);
-                ModelLoader.setCustomModelResourceLocation(block, 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + b.getInternalName(), "inventory"));
-                LogHelper.info("Registered Block Renderer: " + b.getInternalName());
-            }
-    }
-
-    //Register Items Item Renders
-    @Override
-    public void registerItems() {
-        super.registerItems();
-        for (Items i : Items.values()) {
-            ModelLoader.setCustomModelResourceLocation(i.item, 0, new ModelResourceLocation(ModInfo.MOD_ID + ":" + i.getInternalName(), "inventory"));
-            LogHelper.info("Registered Item Renderer: " + i.getInternalName());
-        }
-    }
 }
